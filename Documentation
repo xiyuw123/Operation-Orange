@@ -1,0 +1,23 @@
+The TDP Game
+------------
+
+Examples of HTML/Angular Game code:
+
+http://www.simplygoodcode.com/2014/04/angularjs-game-programming-making-minesweeper/
+
+http://randolphburt.github.io/Centipede-Angular/ 2:32 PM 
+
+https://randolphburt.co.uk/2014/11/20/writing-an-html5-game-with-no-game-engine-just-angularjs-and-the-html5-canvas/ 
+
+http://www.w3schools.com/games/ 2:38 PM 
+
+https://codehub.optum.com/users/sign_in 2:40 PM 
+
+This describes the HTML5 canvas 2:46 PM 
+http://www.w3schools.com/canvas/default.asp 
+
+
+
+User Stories
+- As a user, I want to be able to move my player avatar in four different directions
+
