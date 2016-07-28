@@ -25,3 +25,6 @@ TDP stock ticker
 Google Fin API  examples:
 http://itsliferay.blogspot.com/2011/09/get-real-time-stock-values-using-yahoo.html
 http://digitalpbk.com/stock/google-finance-get-stock-quote-realtime
+
+Yahoo Finance (seems to have historical data as json)
+http://stackoverflow.com/questions/21756192/yahoo-finance-get-data-as-json
