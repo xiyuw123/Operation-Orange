@@ -52,12 +52,22 @@ Analytics
 - Sort stocks
 
 
-JSON FILE
+JSON FILE FOR STOCKS
 
 Ticker (string)
 Company name (string)
 Current stock price (array of floats)
 Historical stock price (array of floats)
+
+
+JSON FILE FOR USER
+
+First Name (string)
+Last Name (string)
+User ID (string)
+Password (string)
+Email (string)
+Stock portfolio (array of (string, float) tuples)
 
 
 STOCK FUNCTIONS
