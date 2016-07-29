@@ -17,10 +17,6 @@ This describes the HTML5 canvas 2:46 PM
 http://www.w3schools.com/canvas/default.asp 
 
 
-
-User Stories
-- As a user, I want to be able to move my player avatar in four different directions
-
 TDP stock ticker
 Google Fin API  examples:
 http://itsliferay.blogspot.com/2011/09/get-real-time-stock-values-using-yahoo.html
@@ -34,3 +30,40 @@ https://youtu.be/tyRcHzLNPbU
 
 We can use Google Visualization to make charts:
 https://developers.google.com/chart/interactive/docs/quick_start
+
+Stocks App
+----------
+
+FEATURES
+
+Home Page
+- See status of stocks (snapshot of stocks vs index)
+- Chart that shows real time perfomance of stocks
+
+Portfolio Management
+- Trading stocks
+- Pie graphs of stock allocations
+- Look at each of your stocks
+
+Analytics
+- Performance of stocks (how your stocks compare to industry)
+- Charts from Google API
+- Search for a certain stock
+- Sort stocks
+
+
+JSON FILE
+
+Ticker (string)
+Company name (string)
+Current stock price (array of floats)
+Historical stock price (array of floats)
+
+
+STOCK FUNCTIONS
+
+Daily change (difference between yesterday's and most current price)
+Daily high, daily low
+3 month, 6 month, high and low
+Average performance of all stocks
+Buy stock, Sell stock
