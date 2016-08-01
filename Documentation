@@ -77,3 +77,19 @@ Daily high, daily low
 3 month, 6 month, high and low
 Average performance of all stocks
 Buy stock, Sell stock
+
+
+STOCK PLANNER TOOL (User stories)
+
+My Portfolio
+
+- View allocation of stocks in portfolio
+- Search for a stock, view daily performance
+- Sell or delete stock
+- Buy or stock
+
+Stock analysis
+
+- View historical performance of a stock
+- Compare stocks with other stocks
+- Compare stocks with average/stock index
