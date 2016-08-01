@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html ng-app="tdpApp">
+<head>
+    <title>TDP Stock Tool</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- RWD makes content fit device width-->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-animate.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+    <!--<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
+    <script src="app.module.js"></script>
+    <script src="app.routes.js"></script>
+
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+</head>
+
+<body ng-controller="mainController">
+
+<div class="header">
+    <h2>TDP Financial Analytics Tool</h2>
+</div>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li><a href="#">Home</a></li>
+                <li><a href="#portfolio">Portfolio Management</a></li>
+                <li><a href="#analytics">Financial News</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#register"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+                <li><a href="#login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- MAIN CONTENT AND INJECTED VIEWS -->
+<div id="main">
+
+    <!-- angular templating -->
+    <!-- this is where content will be injected -->
+    <div ng-view></div>
+
+</div>
+<script src="assets/js/objects.js"></script>
+<script src="controllers/mainController.js"></script>
+<script src="controllers/portfolioController.js"></script>
+<script src="controllers/analyticsController.js"></script>
+<script src="controllers/registerController.js"></script>
+<script src="controllers/loginController.js"></script>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+    // Load the Visualization API and the corechart package.
+    google.charts.load('current', {'packages':['corechart']});
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.charts.setOnLoadCallback(drawChart1);
+    function drawChart1(){
+        var BASE_URL = 'http://query.yahooapis.com/v1/public/yql?q=';
+        var yql_query = 'select * from yahoo.finance.quote where symbol in ("YHOO","AAPL","GOOG","MSFT")';
+        var yql_query_str = encodeURI(BASE_URL + yql_query);
+        var query_str_final = yql_query_str + "&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
+        $.getJSON(query_str_final, function(data){
+            console.log(data);
+            var chartData = new google.visualization.DataTable();
+            chartData.addColumn('string', 'Name');
+            chartData.addColumn('number', 'Allocation');
+            for(i = 0; i < data.query.results.quote.length; i++){
+                var quoteObject = data.query.results.quote[i];
+                var name = quoteObject.Name;
+                var symbol = quoteObject.symbol;
+                var change = quoteObject.Change;
+                var high = quoteObject.DaysHigh;
+                var low = quoteObject.DaysLow;
+                if(quoteObject.symbol == "YHOO"){
+                    chartData.addRow([name, 10]);
+                    document.getElementById('yahoo').innerHTML = symbol + " | Change: " + change + " | High: " + high + " | Low: " + low;
+                }
+                if(quoteObject.symbol == "AAPL"){
+                    chartData.addRow([name, 30]);
+                    document.getElementById('apple').innerHTML = symbol + " | Change: " + change + " | High: " + high + " | Low: " + low;
+                }
+                if(quoteObject.symbol == "GOOG"){
+                    chartData.addRow([name, 40]);
+                    document.getElementById('google').innerHTML = symbol + " | Change: " + change + " | High: " + high + " | Low: " + low;
+                }
+                if(quoteObject.symbol == "MSFT"){
+                    chartData.addRow([name, 20]);
+                    document.getElementById('micro').innerHTML = symbol + " | Change: " + change + " | High: " + high + " | Low: " + low;
+                }
+            }
+            // Set chart options
+            var options = {'title':'Investment Allocation',
+                'width':500,
+                'height':400};
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.PieChart(document.getElementById('chart_div_1'));
+            chart.draw(chartData, options);
+        });
+    }
+</script>
+
+</body>
+
+</html>

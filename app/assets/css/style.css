@@ -1,0 +1,34 @@
+/* '*' reset all elements*/
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-family: 'Roboto Mono', sans-serif;
+}
+body{
+    background-color: #005984;
+    /*color: #56575B;*/
+    color: #000000;
+}
+.logo{
+    padding:10px 5px 25px; /*top, right and left, bottom*/
+}
+.header {
+    background-color: #ffffff;
+    color: #005984;
+}
+.header h3{
+    float: right;
+    color: #005984;
+    margin-top: 16px;
+    margin-right: 8px;
+    font-weight: bold;
+}
+.jumbotron{
+    background-color: #ffffff;
+}
+.clear{
+    clear: both;
+}
